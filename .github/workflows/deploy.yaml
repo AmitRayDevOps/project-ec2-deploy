@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v5
       - name: upload to s3 
         run: echo "hello"
+      - name: date
+        run: date
         
   
       
