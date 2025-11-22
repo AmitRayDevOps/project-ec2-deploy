@@ -21,7 +21,7 @@ jobs:
           aws-region: us-east-1
           
       - name: access aws s3
-        run: aws s3 ls
+        run: aws s3 sync . s3://ec2-project-1122333/ --delete
         
   
       
