@@ -22,6 +22,15 @@ jobs:
           
       - name: access aws s3
         run: aws s3 sync . s3://ec2-project-1122333/ --delete
+
+      - name: trigger ssm command 
+        run: |
+            aws ssm send-command \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=["cd /var/www/html","aws s3 sync s3://ec2-project-1122333/ . --delete","service nginx restart"]' \
+            --targets "Key=project,Values=AI" \
+            --comment "deploy lastest code from s3"
+ 
         
   
       
